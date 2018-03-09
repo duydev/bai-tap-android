@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ass04</string>
+    <string name="click_times">Số lần click: %d</string>
+    <string name="click_here">Nhấn Vào Đây!!!</string>
+</resources>
