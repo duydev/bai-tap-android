@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ass03</string>
+    <string name="cntt_hutech">Khoa CNTT - HUTECH</string>
+    <string name="red">Đỏ</string>
+    <string name="green">Xanh</string>
+    <string name="yellow">Vàng</string>
+</resources>
