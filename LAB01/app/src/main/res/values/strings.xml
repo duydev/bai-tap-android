@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LAB01</string>
+    <string name="welcome_lang_co_beach">Welcome to Lăng Cô Beach</string>
+    <string name="copyright">2018 - Trần Nhật Duy</string>
+    <string name="enter_name">Nhập họ tên…</string>
+    <string name="hello">Xin Chào</string>
+    <string name="red">Red</string>
+    <string name="orange">Orange</string>
+    <string name="yellow">Yellow</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="indigo">Indigo</string>
+    <string name="violet">Violet</string>
+    <string name="cal_intro">Minh họa Calculator đơn giản</string>
+    <string name="calc">Calc</string>
+    <string name="cannot_devide_zero">Không thể chia cho 0.</string>
+    <string name="please_enter_blank_fields">Vui lòng điền vào các ô còn trống.</string>
+    <string-array name="operator">
+        <item>Cộng</item>
+        <item>Trừ</item>
+        <item>Nhân</item>
+        <item>Chia</item>
+    </string-array>
+</resources>
