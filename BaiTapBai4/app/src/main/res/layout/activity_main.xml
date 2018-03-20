@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="me.duydev.baitapbai4.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bai_tap_bai_4"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/btnBai1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_1" />
+
+    <Button
+        android:id="@+id/btnBai2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_2" />
+
+    <Button
+        android:id="@+id/btnBai3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_3" />
+
+    <Button
+        android:id="@+id/btnBai4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_4" />
+
+    <Button
+        android:id="@+id/btnBai5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_5" />
+
+    <Button
+        android:id="@+id/btnBai6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_6" />
+
+    <Button
+        android:id="@+id/btnBai7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="switchActivity"
+        android:text="@string/bai_7" />
+
+</LinearLayout>

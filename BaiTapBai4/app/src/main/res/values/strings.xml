@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BaiTapBai4</string>
+    <string name="button">Button</string>
+    <string name="logo_hutech">Logo Hutech</string>
+    <string name="bai_tap_bai_4">Bài Tập - Bài 4</string>
+    <string name="bai_1">Bài 1</string>
+    <string name="bai_2">Bài 2</string>
+    <string name="bai_3">Bài 3</string>
+    <string name="bai_4">Bài 4</string>
+    <string name="bai_5">Bài 5</string>
+    <string name="bai_6">Bài 6</string>
+    <string name="bai_7">Bài 7</string>
+</resources>
