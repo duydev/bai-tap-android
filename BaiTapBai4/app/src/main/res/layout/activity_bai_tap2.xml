@@ -22,7 +22,7 @@
             android:checked="true"
             android:paddingEnd="15sp"
             android:paddingRight="15sp"
-            android:text="Red" />
+            android:text="@string/red" />
 
         <RadioButton
             android:id="@+id/rdoWhite"
@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:paddingEnd="15sp"
             android:paddingRight="15sp"
-            android:text="White" />
+            android:text="@string/white" />
 
         <RadioButton
             android:id="@+id/rdoBlue"
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:paddingEnd="15sp"
             android:paddingRight="15sp"
-            android:text="Blue" />
+            android:text="@string/blue" />
 
     </RadioGroup>
 
@@ -58,7 +58,7 @@
             android:layout_marginStart="10sp"
             android:layout_weight="1"
             android:onClick="setColor"
-            android:text="Set Color" />
+            android:text="@string/set_color" />
 
         <Button
             android:id="@+id/btnClear"
@@ -67,7 +67,7 @@
             android:layout_marginStart="10sp"
             android:layout_weight="1"
             android:onClick="clearColor"
-            android:text="Clear" />
+            android:text="@string/clear" />
     </LinearLayout>
 
     <EditText

@@ -10,4 +10,11 @@
     <string name="bai_5">Bài 5</string>
     <string name="bai_6">Bài 6</string>
     <string name="bai_7">Bài 7</string>
+    <string name="set_color">Set Color</string>
+    <string name="clear">Clear</string>
+    <string name="dai_hoc_cong_nghe_tp_ho_chi_minh">Đại học Công Nghệ TP. Hồ Chí Minh</string>
+    <string name="red">Red</string>
+    <string name="white">White</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
 </resources>
