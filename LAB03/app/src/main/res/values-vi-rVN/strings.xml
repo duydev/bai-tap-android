@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LAB03</string>
+    <string name="welcome_to_six_senses_resort">Chào mừng đến với Six Senses Resort</string>
+    <string name="our_meow_meow">Meow Meow của chúng tôi</string>
+    <string name="reserve_now">Phục vụ ngay!!!</string>
+    <string name="book">Đặt</string>
+    <string name="name">Họ Tên</string>
+    <string name="from_date">Từ Ngày</string>
+    <string name="to_date">Đến Ngày</string>
+    <string name="booking_information">Thông Tin Đặt Mèo</string>
+</resources>

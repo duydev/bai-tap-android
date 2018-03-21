@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LAB03</string>
+    <string name="welcome_to_six_senses_resort">La la la Six Senses Resort</string>
+    <string name="our_meow_meow">Lo lo lo Meow Meow</string>
+    <string name="reserve_now">Le le le!!!</string>
+    <string name="book">Book</string>
+    <string name="booking_information">Booking Information</string>
+</resources>
