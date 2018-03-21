@@ -1,114 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16sp"
-    tools:context="me.duydev.lab04.MainActivity">
+    tools:context="me.duydev.lab04.MainActivity"
+    android:id="@android:id/tabhost">
 
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_above="@id/layoutTable">
+        android:orientation="vertical">
 
-    </ListView>
-
-    <TableLayout
-        android:id="@+id/layoutTable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:stretchColumns="*">
-
-        <TableRow
+        <TabWidget
+            android:id="@android:id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/name" />
+        </TabWidget>
 
-            <EditText
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </TableRow>
-
-        <TableRow
+        <FrameLayout
+            android:id="@android:id/tabcontent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
+            <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/address" />
+                android:layout_alignParentTop="true"
+                android:layout_above="@id/layoutTable">
 
-            <EditText
-                android:id="@+id/txtAddress"
+            </ListView>
+
+            <TableLayout
+                android:id="@+id/layoutTable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:layout_alignParentBottom="true"
+                android:stretchColumns="*">
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/type" />
-
-            <RadioGroup
-                android:id="@+id/rdoType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rdoTakeOut"
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checked="true"
-                    android:text="@string/take_out" />
+                    android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/rdoSitDown"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name" />
+
+                    <EditText
+                        android:id="@+id/txtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/sit_down" />
+                    android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/rdoDelivery"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/address" />
+
+                    <EditText
+                        android:id="@+id/txtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/delivery" />
+                    android:layout_height="wrap_content">
 
-            </RadioGroup>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type" />
 
-        </TableRow>
+                    <RadioGroup
+                        android:id="@+id/rdoType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rdoTakeOut"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:checked="true"
+                            android:text="@string/take_out" />
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_span="2"
-                android:onClick="save"
-                android:text="@string/save" />
+                        <RadioButton
+                            android:id="@+id/rdoSitDown"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/sit_down" />
 
-        </TableRow>
+                        <RadioButton
+                            android:id="@+id/rdoDelivery"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/delivery" />
 
-    </TableLayout>
+                    </RadioGroup>
 
+                </TableRow>
 
-</RelativeLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_span="2"
+                        android:onClick="save"
+                        android:text="@string/save" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</TabHost>

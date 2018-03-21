@@ -2,6 +2,7 @@ package me.duydev.lab02;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int foreColor = 0;
+    private int backColor = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,12 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
                 break;
             case R.id.settings:
-                Intent intent = new Intent(this, SettingsActivity.class);
                 final int result = 1;
+                EditText editText = (EditText) findViewById(R.id.editText);
+                Bundle bundle = new Bundle();
+                bundle.putFloat( "TextSize", editText.getTextSize() );
+                Intent intent = new Intent(this, SettingsActivity.class);
+                intent.putExtras(bundle);
                 startActivityForResult(intent, result);
                 break;
             case R.id.exit:
@@ -75,5 +82,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Bundle bundle = data.getExtras();
+        foreColor = bundle.getInt("ForeColor");
+        backColor = bundle.getInt("BackColor");
+        float textSize = bundle.getFloat("TextSize");
+
+        String colorArr[] = getResources().getStringArray(R.array.color_name_array);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        editText.setTextColor(Color.parseColor( colorArr[foreColor] ));
+        editText.setBackgroundColor(Color.parseColor( colorArr[backColor] ));
+        editText.setTextSize( textSize );
     }
 }
