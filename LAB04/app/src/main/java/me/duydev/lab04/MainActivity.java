@@ -2,6 +2,7 @@ package me.duydev.lab04;
 
 import android.app.TabActivity;
 import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,18 +25,26 @@ import java.util.List;
 
 public class MainActivity extends TabActivity {
 
-    private List<Restaurant> restaurantList = new ArrayList<Restaurant>();
-    private RestaurantAdapter restaurantArrayAdapter = null;
+    Cursor cursorRestaurant = null;
+    RestaurantAdapter restaurantAdapter = null;
+
+    RestaurantHelper restaurantHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        restaurantHelper = new RestaurantHelper(this);
+
         setContentView(R.layout.activity_main);
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setOnItemClickListener(onItemClickListener);
-        restaurantArrayAdapter = new RestaurantAdapter();
-        listView.setAdapter( restaurantArrayAdapter );
+
+        // Get Data from DB
+        cursorRestaurant = restaurantHelper.getAll();
+        startManagingCursor(cursorRestaurant);
+        restaurantAdapter = new RestaurantAdapter( cursorRestaurant );
+        listView.setAdapter( restaurantAdapter );
 
         TabHost.TabSpec spec = getTabHost().newTabSpec("tag1");
         spec.setContent(R.id.listView);
@@ -47,6 +57,12 @@ public class MainActivity extends TabActivity {
         getTabHost().addTab(spec);
 
         getTabHost().setCurrentTab(0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        restaurantHelper.close();
+        super.onDestroy();
     }
 
     public void save(View view) {
@@ -70,25 +86,27 @@ public class MainActivity extends TabActivity {
                 restaurant.setType(getResources().getString(R.string.take_out));
         }
 
-        restaurantArrayAdapter.add( restaurant );
+        restaurantHelper.insert(restaurant.getName(), restaurant.getAddress(), restaurant.getType());
+
+        cursorRestaurant.requery();
 
         /* For Test */
-        restaurant.printTest(this);
+//        restaurant.printTest(this);
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Restaurant restaurant = restaurantList.get(i);
+            cursorRestaurant.moveToPosition(i);
 
             EditText txtName = (EditText) findViewById(R.id.txtName);
-            txtName.setText(restaurant.getName());
+            txtName.setText(restaurantHelper.getName(cursorRestaurant));
 
             EditText txtAddress = (EditText) findViewById(R.id.txtAddress);
-            txtAddress.setText(restaurant.getAddress());
+            txtAddress.setText(restaurantHelper.getAddress(cursorRestaurant));
 
             RadioGroup rdoType = (RadioGroup) findViewById(R.id.rdoType);
-            String type = restaurant.getType();
+            String type = restaurantHelper.getType(cursorRestaurant);
             if( type.equals( getResources().getString( R.string.take_out ) ) ) {
                 rdoType.check(R.id.rdoTakeOut);
             } else if( type.equals( getResources().getString( R.string.sit_down ) ) ) {
@@ -101,44 +119,37 @@ public class MainActivity extends TabActivity {
         }
     };
 
-    public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
+    public class RestaurantAdapter extends CursorAdapter {
 
-        public RestaurantAdapter() {
-            super(MainActivity.this, android.R.layout.simple_list_item_1, restaurantList );
+        public RestaurantAdapter(Cursor c) {
+            super(MainActivity.this, c);
         }
 
-        public RestaurantAdapter(@NonNull Context context, int resource) {
-            super(context, resource);
-        }
-
-        @NonNull
         @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        public void bindView(View view, Context context, Cursor cursor) {
+            View row = view;
+            ((TextView)row.findViewById(R.id.rowTitle)).setText(restaurantHelper.getName(cursor));
+            ((TextView)row.findViewById(R.id.rowSubtitle)).setText(restaurantHelper.getAddress(cursor));
+            ImageView icon  = (ImageView) row.findViewById(R.id.rowIcon);
 
-            View row = convertView;
-            if( row == null ) {
-                LayoutInflater layoutInflater = getLayoutInflater();
-                row = layoutInflater.inflate(R.layout.list_row, null);
+            String type = restaurantHelper.getType(cursor);
+            switch (type) {
+                case "Sit down":
+                    icon.setImageResource(R.drawable.ic_launcher_background);
+                    break;
+                case "Delivery":
+                    icon.setImageResource(R.drawable.ic_launcher_background);
+                    break;
+                default:
+                    // case Take out
+                    icon.setImageResource(R.drawable.ic_launcher_background);
             }
+        }
 
-            Restaurant restaurant = restaurantList.get(position);
-
-            TextView title = (TextView) row.findViewById(R.id.rowTitle);
-            title.setText(restaurant.getName());
-
-            TextView subtitle = (TextView) row.findViewById(R.id.rowTitle);
-            subtitle.setText(restaurant.getAddress());
-
-            ImageView icon = (ImageView) row.findViewById(R.id.rowIcon);
-            String type = restaurant.getType();
-            if( type.equals( getResources().getString( R.string.take_out ) ) ) {
-                icon.setImageResource(R.drawable.ic_launcher_background);
-            } else if( type.equals( getResources().getString( R.string.sit_down ) ) ) {
-                icon.setImageResource(R.drawable.ic_launcher_background);
-            } else {
-                icon.setImageResource(R.drawable.ic_launcher_background);
-            }
-
+        @Override
+        public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
+            LayoutInflater inflater = getLayoutInflater();
+            View row = inflater.inflate(R.layout.list_row, viewGroup, false);
             return row;
         }
     }
