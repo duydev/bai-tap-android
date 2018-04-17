@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ImportIcons</string>
+    <string name="hang_son_doong">Hang Son Doong</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
