@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BaiTapBai3</string>
+    <string name="bai_tap_bai_3">Bài Tập Bài 3</string>
+    <string name="cau_1">Câu 1</string>
+    <string name="cau_2">Câu 2</string>
+    <string name="cau_3">Câu 3</string>
+    <string name="cau_4">Câu 4</string>
+    <string name="font_size_20">Font size 20</string>
+    <string name="font_size_40">Font size 40</string>
+    <string name="click_me">Click me!!!</string>
+    <string name="text_here">Text Here!!!</string>
+</resources>
